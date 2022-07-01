@@ -19,7 +19,7 @@ function dropCollections() {
     // Because these methods are asynchronous, the 'then' clauses are changed so they execute
     // in order. This is necessary because the id fields are generated and if the create
     // (insert) methods were invoked asynchronously the ids would not be deterministic. hi 
-    //
+    // test jenkins
     // A more elegant (and complicated solution) would have been to use an array of functions
     // and map/reduce  
 
