@@ -1,5 +1,7 @@
 import mongoose from 'mongoose'
 import Customer from '../models/customer.js'
+import Event from '../models/event.js'
+import Registration from '../models/registration.js'
 
 
 function dropCollections() {
@@ -8,6 +10,16 @@ function dropCollections() {
     .then(
       ()=>console.log('dropped Customer collection'),
       ()=>console.log('no Customer collection')
+    );
+  Event.collection.drop()
+    .then(
+      ()=>console.log('dropped Event collection'),
+      ()=>console.log('no Event collection')
+    );
+  Registration.collection.drop()
+    .then(
+      ()=>console.log('dropped Registration collection'),
+      ()=>console.log('no Registration collection')
     );
 
 
@@ -29,33 +41,33 @@ function dropCollections() {
           () => Customer.create({ CUSTOMER_NAME: 'George', PASSWORD: 'heyjude',EMAIL: 'george@fabfour.com'})).then(
             () =>Customer.create({ CUSTOMER_NAME: 'Ringo', PASSWORD: 'heyjude',EMAIL: 'ringo@fabfour.com'}))})
     
-    // Event.counterReset('EVENT_ID',
-    //   () => {Event.create({EVENT_CODE: 'CNF001', TITLE: 'React World', DESCRIPTION: 'React.js Conference'}).then( 
-    //     () => Event.create({EVENT_CODE: 'KWS002', TITLE: 'Node.js Meetup', DESCRIPTION: 'JavaScript Developer Meetup'})).then(    
-    //     () => Event.create({EVENT_CODE: 'TRN003', TITLE: 'Jenkins 101', DESCRIPTION: 'Jenkins class'}))})   
+    Event.counterReset('EVENT_ID',
+      () => {Event.create({EVENT_CODE: 'CNF001', TITLE: 'React World', DESCRIPTION: 'React.js Conference'}).then( 
+        () => Event.create({EVENT_CODE: 'KWS002', TITLE: 'Node.js Meetup', DESCRIPTION: 'JavaScript Developer Meetup'})).then(    
+        () => Event.create({EVENT_CODE: 'TRN003', TITLE: 'Jenkins 101', DESCRIPTION: 'Jenkins class'}))})   
 
-    // Registration.counterReset('REGISTRATION_ID',
+    Registration.counterReset('REGISTRATION_ID',
 
-    //   () => {Registration.create({
-    //     EVENT_ID: 1, 
-    //     CUSTOMER_ID: 1, 
-    //     REGISTRATION_DATE: '2022-08-15 00:00:00.0', 
-    //     NOTES: 'please email me the event details'
-    //   }).then(
+      () => {Registration.create({
+        EVENT_ID: 1, 
+        CUSTOMER_ID: 1, 
+        REGISTRATION_DATE: '2022-08-15 00:00:00.0', 
+        NOTES: 'please email me the event details'
+      }).then(
 
-    //     () => Registration.create({
-    //       EVENT_ID: 1, 
-    //       CUSTOMER_ID: 2, 
-    //       REGISTRATION_DATE: '2022-09-20 00:00:00.0', 
-    //       NOTES: 'looking for info on local hotels'
-    //     })).then(
+        () => Registration.create({
+          EVENT_ID: 1, 
+          CUSTOMER_ID: 2, 
+          REGISTRATION_DATE: '2022-09-20 00:00:00.0', 
+          NOTES: 'looking for info on local hotels'
+        })).then(
 
-    //       () => Registration.create({
-    //         EVENT_ID: 1, 
-    //         CUSTOMER_ID: 3, 
-    //         REGISTRATION_DATE: '2022-11-4 00:00:00.0', 
-    //         NOTES: 'n/a'
-    //       }))})
+          () => Registration.create({
+            EVENT_ID: 1, 
+            CUSTOMER_ID: 3, 
+            REGISTRATION_DATE: '2022-11-4 00:00:00.0', 
+            NOTES: 'n/a'
+          }))})
 
   }
  
